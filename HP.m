@@ -1,9 +1,9 @@
 clc
 clear all
 load Cp.txt
-temperaturas = [60:20:100]+273.15;
+temperaturas = [133:20:233]+273.15;
 Piniciais = ones(1,length(temperaturas))*1e5;
-Pfinais = ones(1,length(temperaturas))*60*1e5;
+Pfinais = ones(1,length(temperaturas))*200*1e5;
 hP = 1e5; 
 T0 = 298.15%temperatura de formação padrão
 H0 = -46100;%entalpia padrão de formação
@@ -40,7 +40,7 @@ function df = df(V,P,T)
 endfunction
 function Vf = redlich(P,T)
   V = 1e0;%L
-  for i = 1:500
+  for i = 1:50
     F = f(V,P,T);
     dF = df(V,P,T);
     V = V-F/dF;
@@ -105,9 +105,4 @@ ylabel("P (Pa)")
 title("Diagrama PH da amônia")
 legend('133ºC','153ºC','173ºC','193ºC','213ºC','233ºC')
 figure 1
-%load vetorH2
-%load vetorP2
-%plot(vetorH2,vetorP2/100000,'b')
-%legend('Redlich-Kwong','Van der waals')
 hold off
-%system("C:\\Users\\wwwma\\Desktop\\audio.bat")
